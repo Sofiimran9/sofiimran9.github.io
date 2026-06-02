@@ -21,7 +21,10 @@
       background: #0f172a;
       color: #fff;
     }
-
+    a {
+        border: 0;
+        text-decoration: none;
+    }
     /* Navbar */
     header {
       position: fixed;
@@ -53,7 +56,13 @@
     nav a:hover {
       color: #ff6d00;
     }
-
+.project-card h4, .project-card p {
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.project-card:hover h4, .project-card:hover p {
+    color: #ff6d00;
+}
     /* Hero */
     .hero {
       height: 100vh;
@@ -101,9 +110,10 @@
     }
 
     h3 {
-      font-size: 28px;
+      font-size: 36px;
       margin-bottom: 20px;
       color: #ff6d00;
+      text-align: center;
     }
 
     /* Skills */
@@ -140,10 +150,16 @@
       overflow: hidden;
       transition: 0.3s;
     }
+    .project-card a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
 
     .project-card img {
       width: 100%;
-      height: 160px;
+      height: auto;
       object-fit: cover;
     }
 
@@ -166,6 +182,76 @@
       background: #0b1220;
       color: #94a3b8;
     }
+
+    /* industries I serve  */
+    .industries-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.industries-section h2 {
+  font-size: 36px;
+  color: #ff6d00;
+}
+
+.subtitle {
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.industry-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.industry-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Glow animation */
+.industry-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 60%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.industry-card:hover::before {
+  opacity: 1;
+}
+    /* industries I serve end */
   </style>
 </head>
 
@@ -214,19 +300,23 @@
   <div class="projects">
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="HTML Project">
+        <a href="https://qureskincare.com/products/shower-filter-replacement" target="_blank">
+      <img src="./images/html-project.webp" alt="HTML Project">
       <div>
         <h4>HTML Portfolio Website</h4>
         <p>Responsive portfolio website built using pure HTML structure.</p>
       </div>
+      </a>
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="CSS Project">
-      <div>
-        <h4>CSS Landing Page</h4>
-        <p>Modern landing page with advanced CSS animations and layouts.</p>
-      </div>
+        <a href="https://sulucare.com/pages/results" target="_blank">
+            <img src="./images/css-landing-page.webp" alt="CSS Project">
+            <div>
+                <h4>CSS Landing Page</h4>
+                <p>Modern landing page with advanced CSS animations and layouts.</p>
+            </div>
+        </a>
     </div>
 
     <div class="project-card">
@@ -254,27 +344,33 @@
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="Shopify Project">
-      <div>
-        <h4>Shopify Store Design</h4>
-        <p>High-converting ecommerce store built with Shopify.</p>
-      </div>
+        <a href="https://sulucare.com/products/hair-growth-gummies-hair-skin-nails" target="_blank">
+            <img src="./images/shopify.webp" alt="Shopify Project">
+            <div>
+                <h4>Shopify Store Design</h4>
+                <p>High-converting ecommerce store built with Shopify.</p>
+            </div>
+        </a>
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="WordPress Project">
-      <div>
-        <h4>WordPress Business Website</h4>
-        <p>Professional business website with Elementor customization.</p>
-      </div>
+        <a href="https://4view-tech.com/">
+            <img src="./images/wordpress.webp" alt="WordPress Project">
+            <div>
+                <h4>WordPress Business Website</h4>
+                <p>Professional business website with Elementor customization.</p>
+            </div>
+      </a>
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="Wix Project">
+        <a href="https://skyvafit.com/">
+      <img src="./images/skyvafit.webp" alt="Wix Project">
       <div>
         <h4>Wix Portfolio Website</h4>
         <p>Creative portfolio website designed and optimized on Wix.</p>
       </div>
+      </a>
     </div>
 
     <div class="project-card">
@@ -295,6 +391,36 @@
 
   </div>
 </section>
+
+<!-- industries i serve  -->
+ <section class="industries-section">
+  <div class="container">
+    
+    <h2>Industries We Serve</h2>
+    <p class="subtitle">
+      Our domain expertise across 40+ industries empowers us to provide custom technology services specific to business needs.
+    </p>
+
+    <div class="industries-grid">
+
+      <div class="industry-card">Healthcare</div>
+      <div class="industry-card">Banking</div>
+      <div class="industry-card">Finance</div>
+      <div class="industry-card">Education</div>
+      <div class="industry-card">Insurance</div>
+      <div class="industry-card">Ecommerce</div>
+      <div class="industry-card">Manufacturing</div>
+      <div class="industry-card">Travel & Hospitality</div>
+      <div class="industry-card">Security</div>
+      <div class="industry-card">Media</div>
+      <div class="industry-card">Real Estate</div>
+      <div class="industry-card">Oil & Gas</div>
+
+    </div>
+
+  </div>
+</section>
+<!-- industries i serve end -->
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
