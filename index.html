@@ -121,6 +121,10 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
     .skill-card {
       background: #1e293b;
@@ -206,13 +210,15 @@
   font-size: 16px;
   line-height: 1.6;
 }
-
 .industries-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 990px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
-
 .industry-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -255,6 +261,15 @@ section#contact a {
   opacity: 1;
 }
     /* industries I serve end */
+
+    @media(max-width:767px){
+      section {
+        padding: 40px 15px !important;
+      }
+      .industries-grid {
+        grid-template-columns: repeat(auto-fit, minmax(141px, 2fr));
+    }
+    }
   </style>
 </head>
 
@@ -328,8 +343,8 @@ section#contact a {
         <a href="https://www.pro-lawnsinc.com/">
       <img src="./images/wix.webp" alt="JavaScript Project">
       <div>
-        <h4>JavaScript To-Do App</h4>
-        <p>Interactive task management application using JavaScript.</p>
+        <h4>Wix Website</h4>
+        <p>Built a responsive commercial landscaping website for Pro-Lawns with lead-generation features.</p>
       </div>
       </a>
     </div> 
