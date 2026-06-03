@@ -117,12 +117,11 @@
     }
 
     /* Skills */
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-    }
-
+.skills {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
     .skill-card {
       background: #1e293b;
       padding: 20px;
@@ -161,6 +160,7 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      object-position: top;
     }
 
     .project-card div {
@@ -185,9 +185,9 @@
 
     /* industries I serve  */
     .industries-section {
-  padding: 80px 20px;
-  text-align: center;
-}
+    padding: 80px 10%;
+    text-align: center;
+  }
 
 .container {
   max-width: 1100px;
@@ -228,10 +228,10 @@
 
 /* Hover Effect */
 .industry-card:hover {
-  transform: translateY(-8px);
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, #ff6d00, #0f172a);
+    color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* Glow animation */
@@ -290,6 +290,9 @@
     <div class="skill-card">Wix</div>
     <div class="skill-card">Webflow</div>
     <div class="skill-card">Squarespace</div>
+    <div class="skill-card">Email Template Design</div>
+    <div class="skill-card">Meta Ads Expert</div>
+    <div class="skill-card">SEO Expert</div>
   </div>
 </section>
 
@@ -329,25 +332,29 @@
       </a>
     </div> 
 
-    <!-- <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="Bootstrap Project">
-      <div>
-        <h4>Bootstrap Business Website</h4>
-        <p>Fully responsive company website built with Bootstrap.</p>
-      </div>
+    <div class="project-card">
+      <a href="https://montanelsolutions.com/en">
+        <img src="./images/montanelsolutions.webp" alt="Hire Shopify Expert Developer">
+        <div>
+          <h4>Shopify Custom Product Page</h4>
+          <p>Shopify Custom Product Page Functionality</p>
+        </div>
+      </a>
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="Tailwind Project">
+      <a href="https://hoperings.com/">
+      <img src="./images/hopering.webp" alt="Tailwind Project">
       <div>
         <h4>Tailwind SaaS Landing Page</h4>
         <p>Fast and modern SaaS website designed using Tailwind CSS.</p>
       </div>
-    </div> -->
+      </a>
+    </div> 
 
     <div class="project-card">
-        <a href="https://sulucare.com/products/hair-growth-gummies-hair-skin-nails" target="_blank">
-            <img src="./images/shopify.webp" alt="Shopify Project">
+        <a href="https://thelongevitystore.com/" target="_blank">
+            <img src="./images/longvity.webp" alt="Shopify Project">
             <div>
                 <h4>Shopify Store Design</h4>
                 <p>High-converting ecommerce store built with Shopify.</p>
@@ -375,28 +382,31 @@
       </a>
     </div>
 
-    <!-- <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="Webflow Project">
+     <div class="project-card">
+      <a href="https://gledringusa.com/">
+      <img src="./images/gledring.webp" alt="Webflow Project">
       <div>
         <h4>Webflow Website</h4>
         <p>Modern and responsive website developed with Webflow.</p>
       </div>
+      </a>
     </div>
 
     <div class="project-card">
-      <img src="https://via.placeholder.com/600x400" alt="Squarespace Project">
+      <a href="https://www.the-lbb.com/">
+      <img src="./images/llb.webp" alt="Squarespace Project">
       <div>
         <h4>Squarespace Business Site</h4>
         <p>Elegant business website built using Squarespace.</p>
       </div>
-    </div> -->
+      </a>
+    </div> 
 
   </div>
 </section>
 
 <!-- industries i serve  -->
  <section class="industries-section">
-  <div class="container">
     
     <h2>Industries We Serve</h2>
     <p class="subtitle">
@@ -420,7 +430,6 @@
 
     </div>
 
-  </div>
 </section>
 <!-- industries i serve end -->
 
