@@ -487,3 +487,658 @@ section#contact a {
 
 </body>
 </html>
+
+
+
+
+<!-- complete swiper slider  -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+.custom-swiper{
+    width:100%;
+    position:relative;
+    padding-bottom:50px;
+}
+
+.custom-swiper .swiper-slide{
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.custom-swiper .swiper-slide img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    display:block;
+}
+
+.custom-swiper .swiper-button-next,
+.custom-swiper .swiper-button-prev{
+    color:#000;
+}
+
+.custom-swiper .swiper-pagination-bullet-active{
+    background:#000;
+}
+</style>
+</head>
+<body>
+
+<div class="custom-swiper swiper"
+     data-slides-desktop="4"
+     data-slides-tablet="2"
+     data-slides-mobile="1"
+     data-space="20"
+     data-loop="true"
+     data-autoplay="true"
+     data-autoplay-speed="3000"
+     data-pagination="true"
+     data-arrows="true">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+            <img src="https://picsum.photos/600/400?1" alt="">
+        </div>
+
+        <div class="swiper-slide">
+            <img src="https://picsum.photos/600/400?2" alt="">
+        </div>
+
+        <div class="swiper-slide">
+            <img src="https://picsum.photos/600/400?3" alt="">
+        </div>
+
+        <div class="swiper-slide">
+            <img src="https://picsum.photos/600/400?4" alt="">
+        </div>
+
+        <div class="swiper-slide">
+            <img src="https://picsum.photos/600/400?5" alt="">
+        </div>
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.querySelectorAll('.custom-swiper').forEach(function(slider){
+
+    const desktopSlides = parseInt(slider.dataset.slidesDesktop) || 4;
+    const tabletSlides  = parseInt(slider.dataset.slidesTablet) || 2;
+    const mobileSlides  = parseInt(slider.dataset.slidesMobile) || 1;
+
+    const space         = parseInt(slider.dataset.space) || 20;
+    const loop          = slider.dataset.loop === "true";
+    const autoplay      = slider.dataset.autoplay === "true";
+    const autoplaySpeed = parseInt(slider.dataset.autoplaySpeed) || 3000;
+    const pagination    = slider.dataset.pagination === "true";
+    const arrows        = slider.dataset.arrows === "true";
+
+    if(!arrows){
+        slider.querySelector('.swiper-button-next')?.remove();
+        slider.querySelector('.swiper-button-prev')?.remove();
+    }
+
+    if(!pagination){
+        slider.querySelector('.swiper-pagination')?.remove();
+    }
+
+    new Swiper(slider,{
+        slidesPerView: desktopSlides,
+        spaceBetween: space,
+        loop: loop,
+
+        autoplay: autoplay ? {
+            delay: autoplaySpeed,
+            disableOnInteraction: false
+        } : false,
+
+        pagination: pagination ? {
+            el: slider.querySelector('.swiper-pagination'),
+            clickable: true
+        } : false,
+
+        navigation: arrows ? {
+            nextEl: slider.querySelector('.swiper-button-next'),
+            prevEl: slider.querySelector('.swiper-button-prev')
+        } : false,
+
+        breakpoints:{
+            0:{
+                slidesPerView: mobileSlides
+            },
+            768:{
+                slidesPerView: tabletSlides
+            },
+            1024:{
+                slidesPerView: desktopSlides
+            }
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
+<!-- complete swiper slider end -->
+
+
+
+
+
+
+
+
+
+<!-- complete thumbnail swiper with separate  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    padding:40px;
+    font-family:Arial,sans-serif;
+}
+
+.custom-gallery{
+    max-width:1200px;
+    margin:auto;
+}
+
+.main-swiper{
+    margin-bottom:15px;
+}
+
+.main-swiper .swiper-slide{
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.main-swiper img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    display:block;
+}
+
+.thumb-swiper .swiper-slide{
+    height:100px;
+    opacity:.5;
+    cursor:pointer;
+    border-radius:8px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.thumb-swiper .swiper-slide-thumb-active{
+    opacity:1;
+    border:3px solid #000;
+}
+
+.thumb-swiper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    color:#fff;
+}
+
+.swiper-pagination-bullet-active{
+    background:#fff;
+}
+
+@media(max-width:767px){
+    .main-swiper img{
+        height:300px;
+    }
+
+    .thumb-swiper .swiper-slide{
+        height:70px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!--
+MAIN SLIDER SETTINGS
+data-main-desktop="1"
+data-main-tablet="1"
+data-main-mobile="1"
+data-main-space="20"
+
+THUMBNAIL SETTINGS
+data-thumb-desktop="5"
+data-thumb-tablet="4"
+data-thumb-mobile="3"
+data-thumb-space="10"
+-->
+
+<div class="custom-gallery"
+
+     data-main-desktop="1"
+     data-main-tablet="1"
+     data-main-mobile="1"
+     data-main-space="20"
+
+     data-thumb-desktop="5"
+     data-thumb-tablet="4"
+     data-thumb-mobile="3"
+     data-thumb-space="10"
+
+     data-loop="true"
+     data-autoplay="true"
+     data-autoplay-speed="3000"
+     data-pagination="true"
+     data-arrows="true">
+
+    <!-- MAIN SLIDER -->
+    <div class="swiper main-swiper">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1015/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1016/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1018/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1020/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1024/1200/700" alt="">
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+
+    <!-- THUMBNAIL SLIDER -->
+    <div class="swiper thumb-swiper">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1015/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1016/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1018/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1020/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1024/300/200" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.querySelectorAll('.custom-gallery').forEach(function(gallery){
+
+    const loop = gallery.dataset.loop === "true";
+    const autoplay = gallery.dataset.autoplay === "true";
+    const autoplaySpeed = parseInt(gallery.dataset.autoplaySpeed) || 3000;
+    const pagination = gallery.dataset.pagination === "true";
+    const arrows = gallery.dataset.arrows === "true";
+
+    // MAIN SETTINGS
+    const mainDesktop = parseInt(gallery.dataset.mainDesktop) || 1;
+    const mainTablet = parseInt(gallery.dataset.mainTablet) || 1;
+    const mainMobile = parseInt(gallery.dataset.mainMobile) || 1;
+    const mainSpace = parseInt(gallery.dataset.mainSpace) || 20;
+
+    // THUMB SETTINGS
+    const thumbDesktop = parseInt(gallery.dataset.thumbDesktop) || 5;
+    const thumbTablet = parseInt(gallery.dataset.thumbTablet) || 4;
+    const thumbMobile = parseInt(gallery.dataset.thumbMobile) || 3;
+    const thumbSpace = parseInt(gallery.dataset.thumbSpace) || 10;
+
+    const thumbSwiper = new Swiper(
+        gallery.querySelector('.thumb-swiper'),
+        {
+            spaceBetween: thumbSpace,
+            watchSlidesProgress: true,
+
+            breakpoints:{
+                0:{
+                    slidesPerView: thumbMobile
+                },
+                768:{
+                    slidesPerView: thumbTablet
+                },
+                1024:{
+                    slidesPerView: thumbDesktop
+                }
+            }
+        }
+    );
+
+    new Swiper(
+        gallery.querySelector('.main-swiper'),
+        {
+            slidesPerView: mainDesktop,
+            spaceBetween: mainSpace,
+            loop: loop,
+
+            autoplay: autoplay ? {
+                delay: autoplaySpeed,
+                disableOnInteraction: false
+            } : false,
+
+            pagination: pagination ? {
+                el: gallery.querySelector('.swiper-pagination'),
+                clickable: true
+            } : false,
+
+            navigation: arrows ? {
+                nextEl: gallery.querySelector('.swiper-button-next'),
+                prevEl: gallery.querySelector('.swiper-button-prev')
+            } : false,
+
+            breakpoints:{
+                0:{
+                    slidesPerView: mainMobile
+                },
+                768:{
+                    slidesPerView: mainTablet
+                },
+                1024:{
+                    slidesPerView: mainDesktop
+                }
+            },
+
+            thumbs:{
+                swiper: thumbSwiper
+            }
+        }
+    );
+
+});
+</script>
+
+</body>
+</html>
+<!-- complete thumbnail swiper with separate end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- complete thumbnail swiper   -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    padding:40px;
+    font-family:Arial,sans-serif;
+}
+
+.custom-gallery{
+    max-width:1200px;
+    margin:auto;
+}
+
+.main-swiper{
+    margin-bottom:15px;
+}
+
+.main-swiper .swiper-slide{
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.main-swiper img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    display:block;
+}
+
+.thumb-swiper .swiper-slide{
+    height:100px;
+    opacity:.5;
+    cursor:pointer;
+    border-radius:8px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.thumb-swiper .swiper-slide-thumb-active{
+    opacity:1;
+    border:3px solid #000;
+}
+
+.thumb-swiper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    color:#fff;
+}
+
+.swiper-pagination-bullet-active{
+    background:#fff;
+}
+</style>
+</head>
+<body>
+
+<div class="custom-gallery"
+     data-main-desktop="1"
+     data-thumb-desktop="5"
+     data-thumb-tablet="4"
+     data-thumb-mobile="3"
+     data-loop="true"
+     data-autoplay="true"
+     data-autoplay-speed="3000"
+     data-pagination="true"
+     data-arrows="true">
+
+    <!-- Main Slider -->
+    <div class="swiper main-swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1015/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1016/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1018/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1020/1200/700" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1024/1200/700" alt="">
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <!-- Thumbnail Slider -->
+    <div class="swiper thumb-swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1015/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1016/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1018/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1020/300/200" alt="">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://picsum.photos/id/1024/300/200" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.querySelectorAll('.custom-gallery').forEach(function(gallery){
+
+    const loop = gallery.dataset.loop === "true";
+    const autoplay = gallery.dataset.autoplay === "true";
+    const autoplaySpeed = parseInt(gallery.dataset.autoplaySpeed) || 3000;
+    const pagination = gallery.dataset.pagination === "true";
+    const arrows = gallery.dataset.arrows === "true";
+
+    const thumbDesktop = parseInt(gallery.dataset.thumbDesktop) || 5;
+    const thumbTablet = parseInt(gallery.dataset.thumbTablet) || 4;
+    const thumbMobile = parseInt(gallery.dataset.thumbMobile) || 3;
+
+    const thumbSwiper = new Swiper(
+        gallery.querySelector('.thumb-swiper'),
+        {
+            spaceBetween:10,
+            watchSlidesProgress:true,
+
+            breakpoints:{
+                0:{
+                    slidesPerView:thumbMobile
+                },
+                768:{
+                    slidesPerView:thumbTablet
+                },
+                1024:{
+                    slidesPerView:thumbDesktop
+                }
+            }
+        }
+    );
+
+    new Swiper(
+        gallery.querySelector('.main-swiper'),
+        {
+            loop:loop,
+
+            autoplay: autoplay ? {
+                delay: autoplaySpeed,
+                disableOnInteraction:false
+            } : false,
+
+            pagination: pagination ? {
+                el: gallery.querySelector('.swiper-pagination'),
+                clickable:true
+            } : false,
+
+            navigation: arrows ? {
+                nextEl: gallery.querySelector('.swiper-button-next'),
+                prevEl: gallery.querySelector('.swiper-button-prev')
+            } : false,
+
+            thumbs:{
+                swiper:thumbSwiper
+            }
+        }
+    );
+
+});
+</script>
+
+</body>
+</html>
+<!-- complete thumbnail swiper end  -->
